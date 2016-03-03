@@ -1,4 +1,5 @@
 "use strict";
+var servers = require("./config.js");
 
 var mumble = require("mumble");
 var fs = require('fs');
@@ -7,20 +8,6 @@ var options = {
 	key: fs.readFileSync( 'key.pem' ),
 	cert: fs.readFileSync( 'cert.pem' )
 };
-
-var servers = {
-	main: {
-		url: "janniklorenz.de:65113",
-		username: "Relay_janniklorenz.de",
-		connection: null,
-	},
-	slave: {
-		url: "talk.janniklorenz.de:64983",
-		username: "Relay_talk.janniklorenz.de",
-		connection: null,
-	},
-};
-
 
 
 mumble.connect(servers.main.url, options, function ( error, connection ) {
